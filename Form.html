@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Sign Up Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="body">
+    <div class="image-section">
+  <div class="banner">
+    <img id="logo" src="odin-lined.png">
+    <div id="logo-text">Odin</div>
+  </div>
+  <div class="footerContainer">
+  <div class="footer">Image from <a  id="footerLink"  href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pixelstalk.net%2Fwild-animals-wallpaper-hd%2F&psig=AOvVaw2uUnmXddAq-Rn9Xe-yXIwb&ust=1674929405734000&source=images&cd=vfe&ved=0CBAQjhxqFwoTCMit17Ss6PwCFQAAAAAdAAAAABAE">PixelsTalk.net</a></div>
+  </div>
+    </div>
+    
+    <div class="text-section">
+    <div class="header-text">This is not a real online service! You know you need something like this in your life to <br>help you realize your deepest dreams. Sign up <em>now</em> to get started. <p></p> You know you want to </div>
+        <form action="formResults.html" method="get">
+           <h2>Let's do this</h2>
+            <div class="gridContainer">
+          
+            <div class="grid-item grid-item-1">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+            </div>
+            <div class="grid-item grid-item-2">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+            </div>
+            <div class="grid-item grid-item-3">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="JohnSmith@gmail.com">
+            </div>
+            <div class="grid-item grid-item-4">
+                <label id="phoneNumberLabel" for="tele">Phone Number</label>
+                <input type="tel" name="tele" id="tele" placeholder="07583828483">
+            </div>
+            <div class="grid-item grid-item-5">
+             <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="AStrongPassword989!">
+               <div id='password-error' class='error'></div>
+            </div>
+            <div class="grid-item grid-item-6">
+                <label id="confirmPasswordLabel" for="confirmPassword">Confirm Password</label>
+               <span id="passwordError" class="charError"> <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Matching Password"></span>
+                </div>
+            </div>
+            <div class="formButton">
+                <button type="submit">Create Account</button>
+        </form>
+    <div class="footerText">Already have an account? <a id="login" href="Form.html">Log in</a></div>
+    </div>
+    <script>
+      
+      var passwordCharacters = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+document.getElementById("password").addEventListener("input", checkPassword);
+document.getElementById("confirmPassword").addEventListener("input", checkPassword);
+document.getElementById("password-error").style.display = "absolute"
+function checkPassword() {
+  var password = document.getElementById("password").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+   document.getElementById("password-error").style.display = "block"
+  if (password !== confirmPassword) {
+  document.getElementById("passwordError").classList.add("passwordMatchError");
+} else {
+  document.getElementById("passwordError").classList.remove("passwordMatchError");
+}
+
+if (!password.match(/[!@#$%^&*]/g)) {
+  document.getElementById("password-error").innerHTML = "*Need at least one special character";
+} else if (password.length < 9) {
+  document.getElementById("password-error").innerHTML = "*Need at least 8 characters";
+} else if (!password.match(/[A-Z]/g)) {document.getElementById("password-error").innerHTML = "*Need at least one upper case letter";
+}
+else if(password.length > 35)
+{document.getElementById("password-error").innerHTML = "*No more than 35 characters, please!";
+}
+ else {
+  document.getElementById("password-error").innerHTML = "";
+}
+}
+        </script>
+</body>
+</html>
